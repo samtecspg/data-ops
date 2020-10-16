@@ -1,0 +1,40 @@
+##  Note that helm by default only runs the daskhub specification of jupyterhub
+##  Overrides here are to ensure that the livy version still runs properly
+##  And adds profile list to switch between the underlying images
+
+daskhub:
+  jupyterhub:
+    singleuser:
+
+      storage:
+        capacity: 2Gi
+        homeMountPath: /home/jovyan/notebooks
+        extraVolumes:
+        - name: spark-cluster-notebooks-examples
+          configMap:
+            name: spark-cluster-notebooks-examples
+        extraVolumeMounts:
+        - name: spark-cluster-notebooks-examples
+          mountPath: /home/jovyan/notebooks/examples
+          readOnly: true
+
+      profileList:
+      # https://jupyter-docker-stacks.readthedocs.io/en/latest/using/specifics.html#apache-spark
+      - display_name: "Spark Notebooks"
+        description: "Sparkmagic kernel"
+        default: True
+        # https://jupyterhub-kubespawner.readthedocs.io/en/latest/spawner.html#kubespawner.KubeSpawner
+        kubespawner_override:
+          environment:
+            # For Sparkmagic Kernel
+            LIVY_ENDPOINT: "http://livy-server:80"
+          cmd:
+          - "/opt/singleuser-entrypoint.sh"
+          - "--NotebookApp.notebook_dir=/home/jovyan/notebooks"
+          image: "sasnouskikh/jupyter:4.6.3-sparkmagic_0.15.0"
+      - display_name: "Dask Notebooks"
+        description: "Daskhub Notebook"
+        default: False
+        kubespawner_override:
+          image: "pangeo/base-notebook:2020.07.28"
+      # defaultUrl: "/lab"

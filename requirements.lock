@@ -1,0 +1,9 @@
+dependencies:
+- name: spark-cluster
+  repository: https://jahstreet.github.io/helm-charts
+  version: 2.0.0
+- name: daskhub
+  repository: https://helm.dask.org/
+  version: 4.5.1
+digest: sha256:d09859eedc50a1d3986d141b87d497e5b0d7eb21b49d31a96e1ad8b8412dfd78
+generated: "2020-10-16T16:48:11.118206-04:00"

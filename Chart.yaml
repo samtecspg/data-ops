@@ -1,0 +1,12 @@
+apiVersion: v1
+name: data-ops 
+version: 0.0.1
+description: Combined helm chart for Spark and Dask 
+keywords:
+- livy
+- spark
+- dask
+maintainers:
+- name: kyprifog
+  email: kyle.prifogle@samtec.com 
+kubeVersion: 1.11.0 - 1.18.9
