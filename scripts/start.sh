@@ -1,7 +1,7 @@
 #!/bin/bash
 
-helm repo add https://jahstreet.github.io/helm-charts
-helm repo add https://helm.dask.org
+helm repo add spark-cluster https://jahstreet.github.io/helm-charts
+helm repo add daskhub https://helm.dask.org
 helm repo update
 helm dependency update
 
