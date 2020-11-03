@@ -5,18 +5,9 @@
 daskhub:
   jupyterhub:
     singleuser:
-
       storage:
         capacity: 2Gi
         homeMountPath: /home/jovyan/notebooks
-        extraVolumes:
-        - name: spark-cluster-notebooks-examples
-          configMap:
-            name: spark-cluster-notebooks-examples
-        extraVolumeMounts:
-        - name: spark-cluster-notebooks-examples
-          mountPath: /home/jovyan/notebooks/examples
-          readOnly: true
 
       profileList:
       # https://jupyter-docker-stacks.readthedocs.io/en/latest/using/specifics.html#apache-spark
@@ -36,5 +27,5 @@ daskhub:
         description: "Daskhub Notebook"
         default: False
         kubespawner_override:
-          image: "pangeo/base-notebook:2020.07.28"
+          image: "pangeo/base-notebook:2020.11.06"
       # defaultUrl: "/lab"
