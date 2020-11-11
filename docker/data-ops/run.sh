@@ -1,2 +1,2 @@
 
-docker run -it -u root kprifogle/base-notebook:$(cat VERSION) /bin/bash
+docker run -it kprifogle/base-notebook:$(cat VERSION) /bin/bash

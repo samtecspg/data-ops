@@ -1,2 +1,2 @@
-
-docker build -t kprifogle/base-notebook:$(cat VERSION) .
+ 
+docker build -t kprifogle/base-notebook:$(cat VERSION) . --no-cache

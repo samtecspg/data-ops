@@ -2,16 +2,16 @@ FROM pangeo/base-notebook:2020.11.06
 
 LABEL maintainer="Kyle Prifogle <kprifogle1@gmail.com>"
 
+SHELL ["conda", "run", "-n", "notebook", "/bin/bash", "-c"]
+RUN conda env list
+
 USER root
 
-# This is needed because requests-kerberos fails to install on debian due to missing linux headers
-RUN conda install requests-kerberos -y
+RUN apt-get update && apt-get install gcc python-dev libkrb5-dev -y
 
 USER $NB_UID
 
-RUN pip install --upgrade pip && \
-    pip install --upgrade --ignore-installed setuptools && \
-    pip install sparkmagic==0.15.0
+RUN ${NB_PYTHON_PREFIX}/bin/pip install sparkmagic==0.15.0
 
 RUN mkdir -p /home/$NB_USER/.sparkmagic
 COPY sparkmagic/example_config.json /home/$NB_USER/.sparkmagic/config.json
