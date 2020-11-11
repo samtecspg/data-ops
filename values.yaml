@@ -11,9 +11,20 @@ daskhub:
 
       profileList:
       # https://jupyter-docker-stacks.readthedocs.io/en/latest/using/specifics.html#apache-spark
+      - display_name: "Combined Image"
+        description: "Sparkmagic + Daskgateway"
+        default: True
+        kubespawner_override:
+          environment:
+            # For Sparkmagic Kernel
+            LIVY_ENDPOINT: "http://livy-server:80"
+          cmd:
+          - "/opt/singleuser-entrypoint.sh"
+          - "--NotebookApp.notebook_dir=/home/jovyan/notebooks"
+          image: "kprifogle/base-notebook:0.0.6"
       - display_name: "Spark Notebooks"
         description: "Sparkmagic kernel"
-        default: True
+        default: False
         # https://jupyterhub-kubespawner.readthedocs.io/en/latest/spawner.html#kubespawner.KubeSpawner
         kubespawner_override:
           environment:
