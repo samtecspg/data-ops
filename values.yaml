@@ -11,8 +11,8 @@ daskhub:
 
       profileList:
       # https://jupyter-docker-stacks.readthedocs.io/en/latest/using/specifics.html#apache-spark
-      - display_name: "Combined Image"
-        description: "Sparkmagic + Daskgateway"
+      - display_name: "Big Data Image"
+        description: "Sparkmagic + Daskgateway Image"
         default: True
         kubespawner_override:
           environment:
