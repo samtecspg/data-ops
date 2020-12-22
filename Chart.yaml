@@ -9,4 +9,4 @@ keywords:
 maintainers:
 - name: kyprifog
   email: kyle.prifogle@samtec.com 
-kubeVersion: 1.11.0 - 1.18.9
+# kubeVersion: 1.11.0 - 1.18.9

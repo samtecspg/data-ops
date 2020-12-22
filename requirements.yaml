@@ -3,5 +3,6 @@ dependencies:
   version: "4.5.4"
   repository: "https://helm.dask.org/"
 - name: spark-cluster
-  version: "2.0.0"
+  version: "2.0.1"
   repository: "https://jahstreet.github.io/helm-charts"
+  # repository: "file://../../livy/spark-on-kubernetes-helm/charts/spark-cluster/"

@@ -30,6 +30,7 @@ RUN mkdir -p /home/$NB_USER/notebooks && \
 
 COPY entrypoint.sh /opt/
 COPY singleuser-entrypoint.sh /opt/
+
 # COPY notebooks /home/jovyan/notebooks/examples
 
 # ENTRYPOINT ["tini", "-g", "--"]
